@@ -12,7 +12,6 @@ using std::cos;
 using std::sin;
 
 
-
 struct Vector3 {
     float x,y,z;
 
@@ -37,8 +36,12 @@ struct Vector3 {
     }
 
     [[nodiscard]] Vector3 normalize() const {
-        const float len = std::sqrt(x * x + y * y + z * z);
+        const float len = module();
         return {x / len, y / len, z / len};
+    }
+
+    [[nodiscard]] float module() const {
+        return std::sqrt(x * x + y * y + z * z);
     }
 };
 

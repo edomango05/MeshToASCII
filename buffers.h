@@ -103,6 +103,7 @@ private:
     char static shadeFromNormal(const Vector3& v1, const Vector3& v2, const Vector3& v3) {
          const Vector3 edge1 = v2 - v1;
          const Vector3 edge2 = v3 - v1;
+         if ((edge2 - edge1).module() == 0) return ' ';
          const Vector3 normal = edge1.cross(edge2).normalize();
 
          float intensity = normal.dot(lightDir);
