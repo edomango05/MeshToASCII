@@ -4,7 +4,7 @@
 
 The project is written entirely in C++17 and emphasizes performance, compactness, and minimal dependencies. It provides a visually engaging way to explore 3D shapes in environments without graphical output, making it ideal for experimentation, learning, or just entertainment in a terminal window.
 
-[![Watch the demo](demos/horseascii.mp4)](demos/horseascii.mp4)
+![demos/horseascii.gif](demos/horseascii.gif)
 
 ## Building the Project
 
