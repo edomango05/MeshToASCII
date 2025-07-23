@@ -1,23 +1,12 @@
 # MeshToASCII
 
-**MeshToASCII** is a 3D ASCII renderer written in C++ that projects mesh models (`.obj`) directly into your terminal. It features automatic scene rotation and smooth real-time rendering using terminal-optimized techniques.
+**MeshToASCII** is a lightweight C++ application that renders 3D triangular meshes as ASCII art directly in the terminal. It reads standard `.obj` files and projects the 3D geometry into a 2D ASCII view, updating the terminal in real time with smooth rotation and lighting simulation.
 
----
+The project is written entirely in C++17 and emphasizes performance, compactness, and minimal dependencies. It provides a visually engaging way to explore 3D shapes in environments without graphical output, making it ideal for experimentation, learning, or just entertainment in a terminal window.
 
-## 🚀 Features
+## Building the Project
 
-- Real-time visualization of 3D models in ASCII
-- Supports `.obj` files with vertices and triangular faces
-- 3D projection with depth buffering
-- Simulated lighting using ASCII shading
-- Automatic rotation for dynamic scene rendering
-- Differential frame updates for high performance
-
----
-
-## 🔧 Build Instructions
-
-This project uses **CMake** and requires a compiler that supports C++17 or later.
+MeshToASCII uses CMake for its build system. To compile it, ensure that a C++17-compatible compiler is available on your system. Then follow these steps:
 
 ```bash
 git clone https://github.com/edomango05/MeshToASCII.git
@@ -27,53 +16,30 @@ cmake ..
 make
 ```
 
-The compiled binary will be `m2ascii`.
+This will produce the executable `m2ascii` inside the `build` directory.
 
----
+## Running the Application
 
-## ▶️ Usage
+To run the renderer, execute the binary with the path to a valid `.obj` file as an argument:
 
 ```bash
 ./m2ascii path/to/model.obj
 ```
 
-The model will rotate continuously in the terminal.
+The program expects the OBJ file to include vertex (`v`) and triangular face (`f`) data. Once loaded, the model will begin rotating automatically and render continuously in the terminal.
 
----
+## Performance and Rendering Approach
 
-## 📈 Performance
+The rendering system is optimized to work efficiently in terminal environments. It performs differential frame updates, meaning only the characters that have changed since the previous frame are redrawn. This significantly reduces the overhead of full-screen redraws.
 
-Rendering is optimized for speed and efficiency:
+To enhance realism, the renderer uses simple lighting techniques based on triangle normals and applies varying ASCII characters to simulate shading. Rotation is handled via transformation matrices, and a Z-buffer is used to manage depth and visibility.
 
-- Only changed characters between frames are redrawn
-- Fast buffer operations using `std::memset`, `std::ranges::copy`
-- Target frame rate of ~30 FPS, even on large terminal windows
-- Very low memory footprint (~4 MB typical)
+Despite its minimal resource usage (approximately 3MB of RAM), the renderer can maintain interactive frame rates even on larger terminal windows.
 
----
+## Compatibility
 
-## 🧠 Techniques Used
+MeshToASCII is designed for UNIX-like systems and works best in ANSI-compatible terminals such as Gnome Terminal, iTerm2, Alacritty, or others supporting standard escape codes. On Windows, it is recommended to run it under WSL or through a terminal that supports ANSI escape sequences.
 
-- Orthographic projection with depth buffering (Z-buffer)
-- Scene rotation using 3D transformation matrices
-- Basic lighting model based on face normals
-- ANSI escape sequences (`\x1b[y;xH`) for fast terminal drawing
+## License and Credits
 
----
-
-## 🖥️ Requirements
-
-- ANSI-compatible terminal (Gnome Terminal, Alacritty, iTerm2, etc.)
-- Unix-like OS (Linux/macOS). On Windows, use WSL or a compatible terminal
-
----
-
-## 📜 License
-
-Distributed under the **MIT License**.
-
----
-
-## 👤 Author
-
-[edomango05](https://github.com/edomango05)
+The project is released under the MIT License. It was created and is maintained by [edomango05](https://github.com/edomango05).
