@@ -4,6 +4,8 @@
 
 The project is written entirely in C++17 and emphasizes performance, compactness, and minimal dependencies. It provides a visually engaging way to explore 3D shapes in environments without graphical output, making it ideal for experimentation, learning, or just entertainment in a terminal window.
 
+[![Watch the demo]](demos/demo.mp4)
+
 ## Building the Project
 
 MeshToASCII uses CMake for its build system. To compile it, ensure that a C++17-compatible compiler is available on your system. Then follow these steps:
@@ -43,3 +45,4 @@ MeshToASCII is designed for UNIX-like systems and works best in ANSI-compatible 
 ## License and Credits
 
 The project is released under the MIT License. It was created and is maintained by [edomango05](https://github.com/edomango05).
+
