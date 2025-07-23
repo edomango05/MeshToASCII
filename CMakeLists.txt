@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 3.31)
-project(cube)
+project(MeshToASCII)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(cube main.cpp
-        linear.h
-        buffers.h
-        parser.h)
+include_directories(src/include)
+
+add_executable(m2ascii
+        src/main.cpp
+        src/include/linear.h
+        src/include/buffers.h
+        src/include/parser.h
+        src/implementation/buffers.cpp
+        src/implementation/linear.cpp
+        src/implementation/parser.cpp
+)
