@@ -4,15 +4,14 @@
 
 #include "buffers.h"
 
-
 ASCIIRenderer::ASCIIRenderer(const int width_, const int height_, Mesh&& mesh):
 frameSize((width_ + 1) * height_),
 mesh(std::move(mesh)) {
     width = width_;
     height = height_;
-    frameBuffer = std::vector((width + 1) * height, ' ');
-    depthBuffer = std::vector((width + 1) * height, 0.0f);
-    cleanDepth = std::vector((width + 1) * height, 0.0f);
+    frameBuffer = std::vector(frameSize, ' ');
+    depthBuffer = std::vector(frameSize, 0.0f);
+    cleanDepth = std::vector(frameSize, 0.0f);
     previousFrame = frameBuffer;
     for (uint row = 1; row <= height; row ++) {
         previousFrame[row * (width + 1) - 1] = '\n';
@@ -35,19 +34,15 @@ void ASCIIRenderer::clearBuffers() {
 
 void ASCIIRenderer::renderFrame()  {
     std::cout << "\x1b[H"; // transfer cursor
-    std::cout << std::flush; // assicura che non ci siano dati residui
+    std::cout << std::flush;
 
-    const int stride = width + 1; // newline incluso se presente nel buffer
+    const int stride = width + 1;
 
     for (int i = 0; i < frameSize; ++i) {
         if (frameBuffer[i] != previousFrame[i]) {
             int x = i % stride;
             int y = i / stride;
-
-            // Muove il cursore a (y+1, x+1) e stampa il nuovo carattere
             std::printf("\x1b[%d;%dH%c", y + 1, x + 1, frameBuffer[i]);
-
-            // Aggiorna il frame precedente
             previousFrame[i] = frameBuffer[i];
         }
     }
@@ -64,7 +59,7 @@ void ASCIIRenderer::projectVectorOnFrame(const Vector3 & vec, const char symbol)
 
     const int frameIndex = yFrame * (width + 1) - 1 + xFrame;
     if (frameIndex > frameSize) return;
-    if (const float depth = 1 / (vec.z +  110.f); depthBuffer[frameIndex] < depth) {
+    if (const float depth = 1 / (vec.z +  1100.f); depthBuffer[frameIndex] < depth) {
         drawSymbol(frameIndex, symbol, depth);
     }
 }
