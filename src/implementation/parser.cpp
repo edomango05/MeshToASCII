@@ -33,7 +33,7 @@ Mesh::Mesh(const std::string& filename)  {
             i1 = parseIndex(b);
             i2 = parseIndex(c);
 
-            triangles.push_back(std::vector{i0, i1, i2});
+            triangles.push_back({i0, i1, i2});
         }
     }
 }

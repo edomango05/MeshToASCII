@@ -2,13 +2,13 @@
 
 **MeshToASCII** is a lightweight C++ application that renders 3D triangular meshes as ASCII art directly in the terminal. It reads standard `.obj` files and projects the 3D geometry into a 2D ASCII view, updating the terminal in real time with smooth rotation and lighting simulation.
 
-The project is written entirely in C++17 and emphasizes performance, compactness, and minimal dependencies. It provides a visually engaging way to explore 3D shapes in environments without graphical output, making it ideal for experimentation, learning, or just entertainment in a terminal window.
+The project is written entirely in C++20 and emphasizes performance, compactness, and minimal dependencies. It provides a visually engaging way to explore 3D shapes in environments without graphical output, making it ideal for experimentation, learning, or just entertainment in a terminal window.
 
 ![demos/horseascii.gif](demos/horseascii.gif)
 
 ## Building the Project
 
-MeshToASCII uses CMake for its build system. To compile it, ensure that a C++17-compatible compiler is available on your system. Then follow these steps:
+MeshToASCII uses CMake for its build system. To compile it, ensure that a C++20-compatible compiler is available on your system. Then follow these steps:
 
 ```bash
 git clone https://github.com/edomango05/MeshToASCII.git
@@ -36,7 +36,7 @@ The rendering system is optimized to work efficiently in terminal environments. 
 
 To enhance realism, the renderer uses simple lighting techniques based on triangle normals and applies varying ASCII characters to simulate shading. Rotation is handled via transformation matrices, and a Z-buffer is used to manage depth and visibility.
 
-Despite its minimal resource usage (approximately 3MB of RAM), the renderer can maintain interactive frame rates even on larger terminal windows.
+Despite its minimal resource usage (depends on frame size and mesh complexity), the renderer can maintain interactive frame rates even on larger terminal windows.
 
 ## Compatibility
 

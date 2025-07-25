@@ -12,14 +12,16 @@
 
 #include "linear.h"
 
-using Triangle = std::vector<int>;
+struct Triangle {
+    int i1, i2, i3;
+};
 
 class Mesh {
 public:
-    std::vector< Vector3> vertices;
-    std::vector< Triangle> triangles;
+    std::vector<Vector3> vertices;
+    std::vector<Triangle> triangles;
 
-    explicit Mesh(const std::string& filename);
+    explicit Mesh(const std::string &filename);
 };
 
 
